@@ -158,5 +158,4 @@ Frontend on vercel.com
 
 Backend on onrender.com
 
- - https://walmart-fullstack.onrender.com/api/
-```
+ - https://walmart-fullstack.onrender.com/
