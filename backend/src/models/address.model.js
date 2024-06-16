@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
+// Define the schema for an individual address
 const addressSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
     trim: true,
-    min: 3,
-    max: 50,
+    minlength: 3,
+    maxlength: 50,
   },
   mobileNumber: {
     type: String,
@@ -22,15 +23,15 @@ const addressSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    min: 10,
-    max: 100,
+    minlength: 10,
+    maxlength: 100,
   },
   address: {
     type: String,
     required: true,
     trim: true,
-    min: 10,
-    max: 100,
+    minlength: 10,
+    maxlength: 100,
   },
   cityDistrictTown: {
     type: String,
@@ -40,12 +41,11 @@ const addressSchema = new mongoose.Schema({
   state: {
     type: String,
     required: true,
-    required: true,
   },
   landmark: {
     type: String,
-    min: 10,
-    max: 100,
+    minlength: 10,
+    maxlength: 100,
   },
   alternatePhone: {
     type: String,
@@ -54,22 +54,26 @@ const addressSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ["home", "work"],
-    required: true,
   },
 });
 
+// Define the schema for user addresses, which includes an array of addressSchema
 const userAddressSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "User",
+      ref: "User", // Reference to the User model
     },
-    address: [addressSchema],
+    addresses: [addressSchema], // Array of addresses associated with the user
   },
-  { timestamps: true, versionKey: false }
+  {
+    timestamps: true, // Adds createdAt and updatedAt fields automatically
+    versionKey: false, // Removes the version key "__v"
+  }
 );
 
+// Create a model named "UserAddress" using userAddressSchema
 const UserAddress = mongoose.model("UserAddress", userAddressSchema);
 
 export default UserAddress;

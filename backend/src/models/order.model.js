@@ -1,15 +1,16 @@
 import mongoose from "mongoose";
 
+// Define the schema for an order
 const orderSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "User", // Reference to the User model
       required: true,
     },
     addressId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "UserAddress.address",
+      ref: "UserAddress.address", // Reference to the UserAddress model's address field
       required: true,
     },
     totalAmount: {
@@ -20,7 +21,7 @@ const orderSchema = new mongoose.Schema(
       {
         productId: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
+          ref: "Product", // Reference to the Product model
         },
         payablePrice: {
           type: Number,
@@ -34,19 +35,19 @@ const orderSchema = new mongoose.Schema(
     ],
     paymentStatus: {
       type: String,
-      enum: ["pending", "completed", "cancelled", "refund"],
+      enum: ["pending", "completed", "cancelled", "refund"], // Payment status options
       required: true,
     },
     paymentType: {
       type: String,
-      enum: ["cod", "card"],
+      enum: ["cod", "card"], // Payment type options
       required: true,
     },
     orderStatus: [
       {
         type: {
           type: String,
-          enum: ["ordered", "packed", "shipped", "delivered"],
+          enum: ["ordered", "packed", "shipped", "delivered"], // Order status options
           default: "ordered",
         },
         date: {
@@ -59,9 +60,13 @@ const orderSchema = new mongoose.Schema(
       },
     ],
   },
-  { timestamps: true, versionKey: false }
+  { 
+    timestamps: true, // Adds createdAt and updatedAt fields automatically
+    versionKey: false // Removes the version key "__v"
+  }
 );
 
+// Create a model named "Order" using orderSchema
 const Order = mongoose.model("Order", orderSchema);
 
 export default Order;
