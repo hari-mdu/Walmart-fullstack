@@ -144,7 +144,7 @@ For endpoints requiring authentication, include the `Authorization` header with 
 ```http
 Authorization: Bearer <your-token-here>
 
-
+```
 
 
 
