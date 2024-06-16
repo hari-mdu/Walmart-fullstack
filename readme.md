@@ -83,7 +83,7 @@ cd frontend
 
 npm install
 
-npm start
+npm run dev
 ```
 
 - For backend
@@ -93,7 +93,7 @@ cd backend
 
 npm install
 
-npm start
+npm run dev
 ```
 
 This will start you frontend part in http://localhost:5173 and backend part running in http://localhost:8080
@@ -144,7 +144,7 @@ For endpoints requiring authentication, include the `Authorization` header with 
 ```http
 Authorization: Bearer <your-token-here>
 
-
+```
 
 
 
@@ -152,11 +152,10 @@ Authorization: Bearer <your-token-here>
 
 click on the link to view the project website
 
-Frontend on netlify.com
+Frontend on vercel.com
 
  - https://walmart-fullstack.vercel.app/
 
-Backend on render.com
+Backend on onrender.com
 
- - https://walmart-fullstack.onrender.com/api/
-```
+ - https://walmart-fullstack.onrender.com/
